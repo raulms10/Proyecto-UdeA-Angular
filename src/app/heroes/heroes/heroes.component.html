@@ -1,0 +1,63 @@
+<div class="mitad" *ngIf="mostrarLista">
+  <div class="line">
+    <div class="mitad">
+      <h2 appResaltar>Mis Heroes</h2>
+    </div>
+    <button mat-stroked-button color="primary" (click)="mostrarLista = false">Nuevo</button>
+  </div>
+  <br><br><br>
+  <ul class="heroes">
+    <li *ngFor="let hero of heroes" [class.selected]="hero === selectedHero" (click)="onSelect(hero)">
+      <span class="badge">{{hero.id}}</span> {{hero.nombre}}
+      <button class="derecha" mat-icon-button>
+        <mat-icon aria-label="Eliminar héroe">delete</mat-icon>
+      </button>
+    </li>
+  </ul>
+</div>
+
+<div class="mitad" *ngIf="!mostrarLista">
+  <app-agregar-heroe (heroeInsertado)="heroeInsertado($event)"></app-agregar-heroe>
+</div>
+
+<div class="mitad">
+  <div *ngIf="selectedHero && false">
+    <h2>Poderes</h2>
+    <ul class="heroes">
+      <li *ngFor="let poder of selectedHero.poderes">
+        <span class="badge">{{poder.nombre}}</span> {{poder.capacidad}}
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="selectedHero">
+    <h2>Poderes</h2>
+    <table>
+      <tr>
+        <th>Poder </th>
+        <th>Capacidad </th>
+      </tr>
+      <tr *ngFor="let poder of selectedHero.poderes">
+        <td>{{poder.nombre}}</td>
+        <td>{{poder.capacidad}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <div *ngIf="selectedHero">
+    <br>
+    <hr>
+    <h2>Detalles de {{selectedHero.nombre | uppercase}}</h2>
+    <div class="line">
+      <div class="mitad"><span>id: </span>{{selectedHero.id}}</div>
+      <div>
+        <label>nombre:
+          <input [(ngModel)]="selectedHero.nombre" placeholder="nombre" />
+        </label>
+      </div>
+      <div>
+        <button (click)="guardarHeroe()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>

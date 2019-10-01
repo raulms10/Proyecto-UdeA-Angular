@@ -1,0 +1,7 @@
+{
+  "/pruebas": {
+    "target": "http://ayudame2.udea.edu.co",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

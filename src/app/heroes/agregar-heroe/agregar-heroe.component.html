@@ -1,0 +1,9 @@
+<div>
+  <mat-form-field class="tam">
+    <mat-label>Nombre</mat-label>
+    <input matInput placeholder="Ingrese el nombre del héroe" [(ngModel)]="hero.nombre">
+  </mat-form-field>
+</div>
+<div>
+  <button mat-stroked-button color="primary" (click)="guardarHeroe()">Guardar</button>
+</div>

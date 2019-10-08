@@ -1,7 +1,13 @@
 import { Poder } from './poder.model';
 
 export class Hero {
-    id: number;
-    nombre: string;
-    poderes: Array<Poder>
-}
+    constructor(public id: number,
+        public nombre: string,
+        public descripcion?: string,
+        public lugar?: string,
+        public email?: string,
+        public valorUnitario?: number,
+        public cantidad?: number,
+        public total?: number,
+        public poderes?: Array<Poder>) { }
+    }

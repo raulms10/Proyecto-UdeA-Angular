@@ -1,3 +1,74 @@
-<p appResaltar>
+<!-- <p appResaltar>
   lista-villanos works!
-</p>
+</p> -->
+<br>
+<div class="container">
+  <div class="col-md-6">
+    <form (ngSubmit)="insertar()" #heroForm="ngForm">
+      <!-- Campo del nombre -->
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" id="nombre" required [(ngModel)]="hero.nombre" name="nombre"
+            #nombre="ngModel">
+        <div [hidden]="nombre.valid || nombre.pristine" class="alert alert-danger">
+            Nombre es requerido
+        </div>
+      </div>
+      <!-- Campo de descripción -->
+      <div class="form-group">
+        <label for="descripcion">Descripción</label>
+        <input type="text" class="form-control" id="descripcion" [(ngModel)]="hero.descripcion"
+              name="descripcion">
+      </div>
+      <!-- Campo de lugar -->
+      <div class="form-group">
+        <label for="lugar">Donde habita</label>
+        <select class="form-control" id="lugar" required [(ngModel)]="hero.lugar" name="lugar" #lugar="ngModel">
+          <option value=""></option>
+          <option *ngFor="let lugar of lugares" [value]="lugar">{{lugar}}</option>
+        </select>
+        <div [hidden]="lugar.valid || lugar.untouched" class="alert alert-danger">
+            Lugar es requerido
+        </div>
+      </div>
+      <!-- Campo del email -->
+      <div class="form-group">
+        <label for="nombre">Email</label>
+        <input type="text" class="form-control" email id="email" required [(ngModel)]="hero.email" name="email"
+            #email="ngModel">
+        <div [hidden]="email.valid && lugar.untouched" class="alert alert-danger">
+          Email es inválido
+        </div>
+        <div [hidden]="email.pristine || lugar.untouched" class="alert alert-danger">
+          Email es requerido
+        </div>
+      </div>
+      <!-- Campo de Valor Unitario -->
+      <div class="form-group">
+        <label for="valorUnitario">Valor Unitario</label>
+        <input type="number" class="form-control" id="valorUnitario" required [(ngModel)]="hero.valorUnitario"
+            name="valorUnitario" #valorUnitario="ngModel" (ngModelChange)="calcularTotal()">
+        <div [hidden]="valorUnitario.valid || valorUnitario.pristine" class="alert alert-danger">
+            valor Unitario es requerido
+        </div>
+      </div>
+      <!-- Campo de Cantidad -->
+      <div class="form-group">
+        <label for="valorUnitario">Cantidad</label>
+        <input type="number" class="form-control" id="cantidad" required [(ngModel)]="hero.cantidad"
+            name="cantidad" #cantidad="ngModel" (ngModelChange)="calcularTotal()">
+        <div [hidden]="cantidad.valid || cantidad.pristine" class="alert alert-danger">
+            cantidad es requerido
+        </div>
+      </div>
+      <!-- Campo de Total -->
+      <div class="form-group">
+        <label for="Total">Total</label>
+        <input type="number" class="form-control" id="total" disabled [(ngModel)]="hero.total" name="Total"
+            #total="ngModel">
+      </div>
+      <!-- Botón enviar -->
+      <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Insertar</button>
+    </form>
+  </div>
+</div>

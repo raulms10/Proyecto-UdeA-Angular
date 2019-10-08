@@ -4,6 +4,7 @@
 
 /* @import '~@angular/material/theming'; */
 /* @import '~material-design-icons/iconfont/material-icons.css'; */
+@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
 
 h1 {
     color: #369;

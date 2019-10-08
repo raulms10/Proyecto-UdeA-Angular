@@ -17,7 +17,7 @@ export class AgregarHeroeComponent implements OnInit {
   @Output() heroeInsertado = new EventEmitter<boolean>(); 
 
   ngOnInit() {
-    this.hero = new Hero();
+    this.hero = {id:0, nombre:""};
   }
   
   guardarHeroe() {

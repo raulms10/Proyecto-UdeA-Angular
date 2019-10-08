@@ -1,0 +1,49 @@
+<div appResaltar>asdasdsa</div>
+<div class="container">
+    <div class="col-md-6">
+        <form (ngSubmit)="insertar()" #heroForm="ngForm">
+            <button (click)="crear()">+</button>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripcion</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let hero of heros">
+                        <td>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="nombre" required [(ngModel)]="hero.nombre"
+                                    name="nombre-{{hero.id}}" #nombre="ngModel">
+                                <div [hidden]="nombre.valid || nombre.pristine" class="alert alert-danger">
+                                    Nombre es requerido
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="descripcion" [(ngModel)]="hero.descripcion"
+                                    name="descripcion-{{hero.id}}">
+                            </div>
+  
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input type="text" class="form-control" email id="email" required
+                                    [(ngModel)]="hero.email" name="email-{{hero.id}}" #email="ngModel">
+                                <div [hidden]="email.pristine || email.valid" class="alert alert-danger">
+                                    Email es requerido
+                                </div>
+                            </div>
+  
+                        </td>
+                    </tr>
+  
+            </table>
+  
+        </form>
+    </div>
+ </div>
+ 

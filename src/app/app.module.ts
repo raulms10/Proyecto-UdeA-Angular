@@ -10,11 +10,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { HeroesComponent } from './heroes/heroes/heroes.component';
 import { ListaVillanosComponent } from './villanos/lista-villanos/lista-villanos.component';
 import { VillanosModule } from './villanos/villanos.module';
+import { IngresarVillanosComponent } from './villanos/ingresar-villanos/ingresar-villanos.component';
 
 const appRoutes: Routes = [
   // {path: 'heroes', component: HeroesComponent},
   {path: 'heroes', loadChildren: () => import('./heroes/heroes.module').then(mod => mod.HeroesModule)},
-  {path: 'villanos', component: ListaVillanosComponent}
+  {path: 'villanos', component: ListaVillanosComponent},
+  {path: 'nuevo-heroe', component: IngresarVillanosComponent}
 ];
 
 @NgModule({
